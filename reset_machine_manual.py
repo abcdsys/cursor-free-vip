@@ -171,9 +171,16 @@ def modify_workbench_js(file_path: str, translator=None) -> bool:
             with open(file_path, "r", encoding="utf-8", errors="ignore") as main_file:
                 content = main_file.read()
 
-            # Define replacement patterns
-            CButton_old_pattern = r'$(k,E(Ks,{title:"Upgrade to Pro",size:"small",get codicon(){return F.rocket},get onClick(){return t.pay}}),null)'
-            CButton_new_pattern = r'$(k,E(Ks,{title:"yeongpin GitHub",size:"small",get codicon(){return F.rocket},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)'
+            if sys.platform == "win32":
+                # Define replacement patterns
+                CButton_old_pattern = r'$(k,E(Ks,{title:"Upgrade to Pro",size:"small",get codicon(){return F.rocket},get onClick(){return t.pay}}),null)'
+                CButton_new_pattern = r'$(k,E(Ks,{title:"yeongpin GitHub",size:"small",get codicon(){return F.rocket},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)'
+            elif sys.platform == "linux":
+                CButton_old_pattern = r'$(k,E(Ks,{title:"Upgrade to Pro",size:"small",get codicon(){return F.rocket},get onClick(){return t.pay}}),null)'
+                CButton_new_pattern = r'$(k,E(Ks,{title:"yeongpin GitHub",size:"small",get codicon(){return F.rocket},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)'
+            elif sys.platform == "darwin":
+                CButton_old_pattern = r'M(x,I(as,{title:"Upgrade to Pro",size:"small",get codicon(){return $.rocket},get onClick(){return t.pay}}),null)'
+                CButton_new_pattern = r'M(x,I(as,{title:"yeongpin GitHub",size:"small",get codicon(){return $.rocket},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)'
 
             CBadge_old_pattern = r'<div>Pro Trial'
             CBadge_new_pattern = r'<div>Pro'
@@ -330,11 +337,20 @@ class MachineIDResetter:
                 "~/Library/Application Support/Cursor/User/globalStorage/state.vscdb"
             ))
         elif sys.platform == "linux":  # Linux
-            self.db_path = os.path.abspath(os.path.expanduser(
-                "~/.config/Cursor/User/globalStorage/storage.json"
+            # 获取实际用户的主目录
+            sudo_user = os.environ.get('SUDO_USER')
+            if sudo_user:
+                actual_home = f"/home/{sudo_user}"
+            else:
+                actual_home = os.path.expanduser("~")
+                
+            self.db_path = os.path.abspath(os.path.join(
+                actual_home,
+                ".config/Cursor/User/globalStorage/storage.json"
             ))
-            self.sqlite_path = os.path.abspath(os.path.expanduser(
-                "~/.config/Cursor/User/globalStorage/state.vscdb"
+            self.sqlite_path = os.path.abspath(os.path.join(
+                actual_home,
+                ".config/Cursor/User/globalStorage/state.vscdb"
             ))
         else:
             raise NotImplementedError(f"Not Supported OS: {sys.platform}")

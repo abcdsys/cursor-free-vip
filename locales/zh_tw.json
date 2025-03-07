@@ -117,7 +117,12 @@
         "first_name": "名字",
         "last_name": "姓氏",
         "exit_signal": "退出信號",
-        "email_address": "郵箱地址"
+        "email_address": "郵箱地址",
+        "config_created": "配置已創建",
+        "verification_failed": "驗證失敗",
+        "verification_error": "驗證錯誤: {error}",
+        "config_option_added": "配置項已添加: {option}",
+        "config_updated": "配置已更新"
     },
     "auth": {
         "title": "Cursor 認證管理器",

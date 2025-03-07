@@ -136,7 +136,12 @@
         "first_name": "First Name",
         "last_name": "Last Name",
         "exit_signal": "Exit Signal",
-        "email_address": "Email Address"
+        "email_address": "Email Address",
+        "config_created": "Config Created",
+        "verification_failed": "Verification Failed",
+        "verification_error": "Verification Error: {error}",
+        "config_option_added": "Config Option Added: {option}",
+        "config_updated": "Config Updated"
     },
     "auth": {
         "title": "Cursor Auth Manager",

@@ -6,7 +6,7 @@ on:
       version:
         description: 'Version number (e.g. 1.0.9)'
         required: true
-        default: '1.5.03'
+        default: '1.7.02'
 
 permissions:
   contents: write
