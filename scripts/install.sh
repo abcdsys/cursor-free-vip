@@ -63,8 +63,15 @@ detect_os() {
             echo -e "${CYAN}ℹ️ Detected macOS Intel architecture${NC}"
         fi
     elif [[ "$(uname)" == "Linux" ]]; then
-        OS="linux"
-        echo -e "${CYAN}ℹ️ Detected Linux system${NC}"
+        # Detect Linux architecture
+        ARCH=$(uname -m)
+        if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+            OS="linux_arm64"
+            echo -e "${CYAN}ℹ️ Detected Linux ARM64 architecture${NC}"
+        else
+            OS="linux_x64"
+            echo -e "${CYAN}ℹ️ Detected Linux x64 architecture${NC}"
+        fi
     else
         # Assume Windows
         OS="windows"
@@ -119,6 +126,16 @@ install_cursor_free_vip() {
         # Try without architecture
         if [[ "$OS" == "mac_arm64" || "$OS" == "mac_intel" ]]; then
             OS="mac"
+            binary_name="CursorFreeVIP_${VERSION}_${OS}"
+            download_url="https://github.com/yeongpin/cursor-free-vip/releases/download/v${VERSION}/${binary_name}"
+            echo -e "${CYAN}ℹ️ New download link: ${download_url}${NC}"
+            
+            if ! curl --output /dev/null --silent --head --fail "$download_url"; then
+                echo -e "${RED}❌ New download link does not exist${NC}"
+                exit 1
+            fi
+        elif [[ "$OS" == "linux_x64" || "$OS" == "linux_arm64" ]]; then
+            OS="linux"
             binary_name="CursorFreeVIP_${VERSION}_${OS}"
             download_url="https://github.com/yeongpin/cursor-free-vip/releases/download/v${VERSION}/${binary_name}"
             echo -e "${CYAN}ℹ️ New download link: ${download_url}${NC}"

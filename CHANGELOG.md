@@ -1,5 +1,27 @@
 # Change Log
 
+## v1.7.05
+1. Fix: Cursor Version Check | 修復Cursor版本檢查
+2. Fix: Small Problem | 修復一些小問題
+
+
+## v1.7.04
+1. Hotfix: Small Problem | 修復一些小問題
+
+## v1.7.03
+1. Hotfix: Small Problem | 修復一些小問題
+
+## v1.7.02
+1. Fix: Cursor Path | 修復Cursor路徑
+2. Add: Config File | 增加配置文件
+3. Remove: Workbench Cursor Path | 移除Workbench Cursor路徑
+4. Remove: Cursor Main JS | 移除Cursor main.js
+
+## v1.7.01
+- Refactoring: Extract configuration-related code from the `setup_driver` function to an independent `setup_config` function
+- Optimization: Improve code maintainability and make configuration management and browser settings more clear
+- Improvement: The creation and update logic of the configuration file is clearer and more independent
+
 ## v1.6.03
 1. Hotfix: Small Problem | 修復一些問題
 

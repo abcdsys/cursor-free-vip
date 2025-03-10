@@ -160,7 +160,7 @@ class CursorRegistration:
             if usage_ele:
                 total_usage = usage_ele.text.split("/")[-1].strip()
 
-            print(f"Total Usage: {total_usage}\n")
+            print(f"{Fore.CYAN}{EMOJI['INFO']} {self.translator.get('register.total_usage', usage=total_usage)}{Style.RESET_ALL}")
             print(f"{Fore.CYAN}{EMOJI['WAIT']} {self.translator.get('register.get_token')}...{Style.RESET_ALL}")
             max_attempts = 30
             retry_interval = 2

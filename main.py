@@ -285,6 +285,14 @@ def check_latest_version():
 
 def main():
     print_logo()
+    
+    # 初始化配置
+    from new_signup import setup_config
+    config = setup_config(translator)
+    if not config:
+        print(f"{Fore.RED}{EMOJI['ERROR']} {translator.get('menu.config_init_failed')}{Style.RESET_ALL}")
+        return
+        
     check_latest_version()  # Add version check before showing menu
     print_menu()
     

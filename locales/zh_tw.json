@@ -68,8 +68,25 @@
         "version_less_than_0_45": "Cursor版本 < 0.45.0，跳过getMachineId修补",
         "detecting_version": "檢測Cursor版本",
         "patching_getmachineid": "修補getMachineId",
-        "version_greater_than_0_45": "Cursor版本 >= 0.45.0，修補getMachineId"
+        "version_greater_than_0_45": "Cursor版本 >= 0.45.0，修補getMachineId",
+        "permission_denied": "權限拒絕: {error}",
+        "backup_created": "備份已創建",
+        "update_success": "更新成功",
+        "update_failed": "更新失敗: {error}",
+        "windows_machine_guid_updated": "Windows機器GUID更新成功",
+        "reading_package_json": "讀取package.json {path}",
+        "invalid_json_object": "JSON對象無效",
+        "no_version_field": "package.json中沒有版本字段",
+        "version_field_empty": "版本字段為空",
+        "invalid_version_format": "版本格式無效: {version}",
+        "found_version": "找到版本: {version}",
+        "version_parse_error": "版本解析錯誤: {error}",
+        "package_not_found": "package.json未找到: {path}",
+        "check_version_failed": "檢查版本失敗: {error}",
+        "stack_trace": "堆疊跟踪",
+        "version_too_low": "Cursor版本太低: {version} < 0.45.0"
     },
+
     "register": {
         "title": "Cursor 註冊工具",
         "start": "正在啟動註冊流程...",
@@ -117,7 +134,14 @@
         "first_name": "名字",
         "last_name": "姓氏",
         "exit_signal": "退出信號",
-        "email_address": "郵箱地址"
+        "email_address": "郵箱地址",
+        "config_created": "配置已創建",
+        "verification_failed": "驗證失敗",
+        "verification_error": "驗證錯誤: {error}",
+        "config_option_added": "配置項已添加: {option}",
+        "config_updated": "配置已更新",
+        "password_submitted": "密碼已提交",
+        "total_usage": "總使用量: {usage}"
     },
     "auth": {
         "title": "Cursor 認證管理器",
